@@ -1,2 +1,3 @@
+require("dotenv").config()
 const mongoose= require('mongoose');
-mongoose.connect("mongodb://localhost:27017/E-commerce");
+mongoose.connect(`${process.env.MONGO_DB_URI}`);
