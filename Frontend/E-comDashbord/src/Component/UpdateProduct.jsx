@@ -9,6 +9,7 @@ const UpdateProduct = () => {
   const params = useParams();
   const navigate =useNavigate()
 
+  const BASE_URL = "https://e-commerce-0k9a.onrender.com"
   useEffect(() => {
     console.log(params);
     getProductDetails()
@@ -16,7 +17,7 @@ const UpdateProduct = () => {
 
   const getProductDetails = async () => {
     console.log(params);
-    let result = await fetch(`http://localhost:8088/product/${params.id}`,{
+    let result = await fetch(`${BASE_URL}/product/${params.id}`,{
       headers:{
         authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`
       }
@@ -30,7 +31,7 @@ const UpdateProduct = () => {
 
   const updateProduct = async () => {
   console.log(name,price,category,company);
-  let result = await fetch(`http://localhost:8088/product/${params.id}`,{
+  let result = await fetch(`${BASE_URL}/product/${params.id}`,{
     method:'put',
     body:JSON.stringify({name,price,category,company}),
     headers:{

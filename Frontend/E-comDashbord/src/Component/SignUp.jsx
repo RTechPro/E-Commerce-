@@ -7,6 +7,7 @@ const SignUp = () => {
   const [email,setEmail]=useState("")
   const navigate = useNavigate();
   
+  const BASE_URL = "https://e-commerce-0k9a.onrender.com"
   useEffect(() =>{
     const auth= localStorage.getItem('user')
     if (auth)
@@ -17,7 +18,7 @@ const SignUp = () => {
 
   const collectData=async ()=>{
   console.log(name,email,password);
-  let result =await fetch('http://localhost:8088/register',{
+  let result =await fetch(`${BASE_URL}/register`,{
   method:'post',
   body: JSON.stringify({name,email,password}),
   headers:{  

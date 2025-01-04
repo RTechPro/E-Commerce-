@@ -5,6 +5,7 @@ const Login = () => {
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
   const navigate = useNavigate()
+  const BASE_URL = "https://e-commerce-0k9a.onrender.com"
   useEffect(() => {
     const auth = localStorage.getItem('user')
     if (auth) {
@@ -13,7 +14,7 @@ const Login = () => {
   }, [])
   const handleLogin = async () => {
     console.log("email,password", email, password);
-    let result = await fetch('http://localhost:8088/login', {
+    let result = await fetch(`${BASE_URL}/login`, {
       method: 'post',
       body: JSON.stringify({ email, password }),
       headers: {

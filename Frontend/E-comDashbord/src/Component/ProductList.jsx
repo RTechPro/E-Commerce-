@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom'
 const ProductList = () => {
   const [products, setProducts] = useState([])
 
+  const BASE_URL = "https://e-commerce-0k9a.onrender.com"
+
   useEffect(() => {
     getProducts(); 
   }, [])
 
   const getProducts = async () => {
-    let result = await fetch('http://localhost:8088/products',{
+    let result = await fetch(`${BASE_URL}/products`,{
       headers:{
         authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`
       }
@@ -18,7 +20,7 @@ const ProductList = () => {
     setProducts(result)
   }
   const deleteProduct = async (id) => {
-    let result = await fetch(`http://localhost:8088/product/${id}`, { method: "Delete", 
+    let result = await fetch(`${BASE_URL}/product/${id}`, { method: "Delete", 
        headers:{
       authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`
     } })
@@ -30,7 +32,7 @@ const ProductList = () => {
   const searchHandle = async (event) => {
     let key =(event.target.value);
     if(key){
-      let result = await fetch(`http://localhost:8088/search/${key}`,{
+      let result = await fetch(`${BASE_URL}/search/${key}`,{
         headers:{
           authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`
         }

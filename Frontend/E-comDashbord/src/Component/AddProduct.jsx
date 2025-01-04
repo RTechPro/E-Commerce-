@@ -7,6 +7,8 @@ const AddProduct = () => {
   const [company, setCompany] = React.useState('')
   const [error, setError] = React.useState(false)
 
+  const BASE_URL = "https://e-commerce-0k9a.onrender.com";
+
 
   const addProduct = async () => {
 
@@ -17,7 +19,7 @@ const AddProduct = () => {
     }
 
     const userId = JSON.parse(localStorage.getItem('user'))._id;
-    let result = await fetch("http://localhost:8088/add-product", {
+    let result = await fetch(`${BASE_URL}/add-product`, {
       method: 'post',
       body: JSON.stringify({ name, price, category, company, userId }),
       headers: {
